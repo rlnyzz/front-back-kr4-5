@@ -15,7 +15,6 @@ function TechnologyCard({ title, description, status }) {
     }
   };
 
-  // Функция для отображения иконки статуса
   const getStatusIcon = () => {
     switch(status) {
       case 'completed':

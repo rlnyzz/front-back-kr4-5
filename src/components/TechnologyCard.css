@@ -1,0 +1,95 @@
+.technology-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 6px solid #ddd;
+}
+
+.technology-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.technology-card.status-completed {
+  border-left-color: #4caf50;
+  background-color: #f1f8e9;
+}
+
+.technology-card.status-in-progress {
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
+}
+
+.technology-card.status-not-started {
+  border-left-color: #f44336;
+  background-color: #ffebee;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.3em;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.status-completed .status-badge {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-in-progress .status-badge {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status-not-started .status-badge {
+  background-color: #f44336;
+  color: white;
+}
+
+.card-content p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  margin-top: 15px;
+}
+
+.progress-line {
+  height: 6px;
+  border-radius: 3px;
+  background-color: #4caf50;
+  transition: width 0.5s ease;
+}
+
+.progress-line.full {
+  width: 100%;
+}
+
+.progress-line.half {
+  width: 50%;
+  background-color: #ff9800;
+}
+
+.progress-line.none {
+  width: 10%;
+  background-color: #f44336;
+}

@@ -1,0 +1,118 @@
+.progress-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.progress-header h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-label {
+  font-size: 0.9em;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.stat-value.completed {
+  color: #4caf50;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 20px 0;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  border-radius: 15px;
+  transition: width 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+}
+
+.progress-text {
+  color: white;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.progress-message {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.progress-message p {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.progress-message .complete {
+  color: #4caf50;
+}
+
+.progress-message .good {
+  color: #ffeb3b;
+}
+
+.progress-message .average {
+  color: #ff9800;
+}
+
+.progress-message .low {
+  color: #ff5252;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .progress-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-item {
+    width: 80%;
+  }
+}

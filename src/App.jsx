@@ -7,7 +7,7 @@ function App() {
  <div className="App">
  <Greeting />
  <UserCard
- name="Иван Иванов"
+ name="Сысоев Виталий"
  role="Администратор"
  avatarUrl="https://encrypted-tbn0.gstatic.com/images?
 q=tbn:ANd9GcRfVMhpKmVy_-iwfRLAiNiaDslMa-2oEz7KTw&s"

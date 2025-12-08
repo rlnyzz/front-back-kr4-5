@@ -2,8 +2,8 @@ import './App.css';
 import Greeting from './Greeting';
 import UserCard from './UserCard';
 import TaskList from './TaskList';
-import ProgressHeader from './ProgressHeader';
-import TechnologyCard from './TechnologyCard';
+import ProgressHeader from './components/ProgressHeader';
+import TechnologyCard from './components/TechnologyCard';
 
 // Тестовые данные для технологий
 const technologies = [

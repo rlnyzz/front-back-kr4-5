@@ -164,7 +164,7 @@
   gap: 20px;
 }
 
-/* Адаптивность для мобильных устройств */
+
 @media (max-width: 768px) {
   .technology-grid {
     grid-template-columns: 1fr;

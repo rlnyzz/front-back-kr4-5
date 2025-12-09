@@ -1,7 +1,12 @@
-import './TechnologyCard.css';
+import './components/TechnologyCard.css';
 
-function TechnologyCard({ title, description, status }) {
-  // Функция для определения класса статуса
+function TechnologyCard({ id, title, description, status, onStatusChange }) {
+  const handleClick = () => {
+    if (onStatusChange) {
+      onStatusChange(id);
+    }
+  };
+
   const getStatusClass = () => {
     switch(status) {
       case 'completed':
@@ -28,7 +33,6 @@ function TechnologyCard({ title, description, status }) {
     }
   };
 
-  // Функция для отображения текста статуса
   const getStatusText = () => {
     switch(status) {
       case 'completed':
@@ -43,7 +47,11 @@ function TechnologyCard({ title, description, status }) {
   };
 
   return (
-    <div className={`technology-card ${getStatusClass()}`}>
+    <div 
+      className={`technology-card ${getStatusClass()}`}
+      onClick={handleClick}
+      title="Нажмите для изменения статуса"
+    >
       <div className="card-header">
         <h3>{title}</h3>
         <span className="status-badge">
@@ -66,6 +74,15 @@ function TechnologyCard({ title, description, status }) {
           {status === 'not-started' && (
             <div className="progress-line none"></div>
           )}
+        </div>
+        
+        <div className="click-hint">
+          <span className="hint-text">Нажмите для изменения статуса →</span>
+          <span className="next-status">
+            {status === 'not-started' ? '→ Начать изучение' : 
+             status === 'in-progress' ? '→ Завершить' : 
+             '→ Сбросить'}
+          </span>
         </div>
       </div>
     </div>

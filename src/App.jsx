@@ -9,7 +9,7 @@ import Statistics from './pages/Statistics';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './pages/ProtectedRoute';
 import useTechnologies from './hooks/useTechnologies';
 import './App.css';
 

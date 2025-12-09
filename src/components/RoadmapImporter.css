@@ -1,0 +1,245 @@
+.roadmap-importer {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e3f2fd;
+}
+
+.importer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f7ff;
+}
+
+.importer-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.4em;
+}
+
+.import-badge .api-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+.api-status.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.api-status.inactive {
+  background-color: #ff9800;
+  color: white;
+}
+
+.importer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.source-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.source-selector label {
+  font-weight: 600;
+  color: #333;
+  min-width: 120px;
+}
+
+.source-selector select {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1em;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.source-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.custom-url-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.custom-url-input input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.custom-url-input input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.import-custom-btn {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.import-custom-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.import-custom-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.example-roadmaps h4 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.roadmap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.roadmap-item:hover {
+  background: #f1f3f5;
+  border-color: #dee2e6;
+}
+
+.roadmap-info h5 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.roadmap-info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.import-example-btn {
+  padding: 8px 16px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.import-example-btn:hover:not(:disabled) {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+
+.import-example-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.import-status {
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.import-status.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.import-status.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.importer-tips {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.importer-tips p {
+  margin: 5px 0;
+  color: #1565c0;
+  font-size: 0.9em;
+}
+
+.importer-tips a {
+  color: #1565c0;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.importer-tips a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .roadmap-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .import-example-btn {
+    align-self: flex-end;
+  }
+  
+  .source-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .custom-url-input {
+    flex-direction: column;
+  }
+}

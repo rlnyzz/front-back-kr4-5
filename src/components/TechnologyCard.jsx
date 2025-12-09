@@ -1,4 +1,4 @@
-import './components/TechnologyCard.css';
+import './TechnologyCard.css';
 
 function TechnologyCard({ id, title, description, status, onStatusChange }) {
   const handleClick = () => {

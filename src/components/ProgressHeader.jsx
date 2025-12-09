@@ -1,4 +1,4 @@
-import './components/ProgressHeader.css';
+import './ProgressHeader.css';
 import { useState, useEffect } from 'react';
 
 function ProgressHeader({ technologies = [] }) {

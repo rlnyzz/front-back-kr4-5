@@ -1,4 +1,4 @@
-import './components/QuickActions.css';
+import './QuickActions.css';
 
 function QuickActions({ onMarkAllCompleted, onResetAllStatuses, onSelectRandomTech, hasNotStartedTech }) {
   return (

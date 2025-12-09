@@ -1,4 +1,4 @@
-import './components/TechnologyFilters.css';
+import './TechnologyFilters.css';
 
 function TechnologyFilters({ activeFilter, onFilterChange, stats }) {
   const filters = [

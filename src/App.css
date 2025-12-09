@@ -197,3 +197,77 @@
   margin: 0;
   font-size: 1.1em;
 }
+
+/* Стили для управления хранилищем */
+.storage-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff3e0;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-left: 4px solid #ff9800;
+}
+
+.clear-storage-btn {
+  padding: 8px 15px;
+  background: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-storage-btn:hover {
+  background: #f57c00;
+  transform: translateY(-1px);
+}
+
+.storage-hint {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Улучшенные стили для отсутствия результатов */
+.no-results {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+}
+
+.no-results p {
+  margin: 10px 0;
+  color: #6c757d;
+  font-size: 1.1em;
+}
+
+.no-results p:first-child {
+  font-size: 1.3em;
+  color: #495057;
+  font-weight: 600;
+}
+
+.filter-info {
+  text-align: center;
+  margin-top: 25px;
+  padding: 15px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 10px;
+  font-size: 0.95em;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.filter-info p {
+  margin: 0;
+}
+
+.filter-info strong {
+  color: #667eea;
+}

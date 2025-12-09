@@ -10,7 +10,7 @@ import Settings from './pages/Settings';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './pages/ProtectedRoute';
-import useTechnologies from './useTechnologies';
+import useTechnologies from './hooks/useTechnologies';
 import './App.css';
 
 function App() {

@@ -22,17 +22,20 @@ function TechnologyDetail() {
     }
   }, [technologies, techId]);
 
-  if (!technology) {
-    return (
-      <div className="tech-not-found">
-        <h1>📛 Технология не найдена</h1>
-        <p>Технология с ID {techId} не существует или была удалена.</p>
-        <Link to="/technologies" className="btn btn-primary">
-          ← Вернуться к списку
-        </Link>
-      </div>
-    );
-  }
+if (!technology) {
+  return (
+    <div className="tech-not-found">
+      <h1>📛 Технология не найдена</h1>
+      <p>Технология с ID {techId} не существует или была удалена.</p>
+      <Link to="/technologies" className="btn btn-primary">
+        ← Вернуться к списку
+      </Link>
+      <Link to="/404" className="btn btn-secondary" style={{ marginLeft: '10px' }}>
+        Страница 404
+      </Link>
+    </div>
+  );
+}
 
   const handleStatusChange = (newStatus) => {
     updateStatus(parseInt(techId), newStatus);

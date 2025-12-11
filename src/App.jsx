@@ -9,6 +9,7 @@ import Statistics from './pages/Statistics';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import NotFound from './pages/NotFound'; 
 import ProtectedRoute from './pages/ProtectedRoute';
 import useTechnologies from './hooks/useTechnologies';
 import './App.css';
@@ -114,8 +115,11 @@ function App() {
             }
           />
           
-          {/* Редирект для несуществующих маршрутов */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Страница 404 */}
+          <Route path="/404" element={<NotFound />} />
+          
+          {/* Редирект для несуществующих маршрутов на страницу 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       
@@ -140,6 +144,11 @@ function App() {
         </div>
         <div className="footer-bottom">
           <p>© 2024 Трекер технологий. Все права защищены.</p>
+          <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: '5px' }}>
+            <a href="/404" style={{ color: 'inherit', textDecoration: 'none' }}>
+              Страница 404
+            </a>
+          </p>
         </div>
       </footer>
     </div>

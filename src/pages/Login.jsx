@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import './Login.css';
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -58,28 +60,46 @@ function Login({ onLogin }) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', formData.username);
         
+        if (formData.rememberMe) {
+          localStorage.setItem('rememberMe', 'true');
+        } else {
+          localStorage.removeItem('rememberMe');
+        }
+        
         if (onLogin) {
           onLogin(formData.username);
         }
         
-        // Перенаправляем на главную
-        navigate('/');
+        // Получаем URL, откуда пользователь пришел (или куда хотел попасть)
+        const from = location.state?.from?.pathname || '/';
+        
+        // Перенаправляем на сохраненную страницу или на главную
+        navigate(from, { replace: true });
+        
       } else {
         setErrors({ general: 'Неверное имя пользователя или пароль' });
       }
     } catch (error) {
-      setErrors({ general: 'Произошла ошибка при входе' });
+      setErrors({ general: 'Произошла ошибка при входе. Пожалуйста, попробуйте снова.' });
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleDemoLogin = () => {
+    // Автоматически заполняем форму демо-данными
     setFormData({
       username: 'demo',
       password: 'demo123',
       rememberMe: false
     });
+    
+    // Очищаем ошибки при демо-входе
+    setErrors({});
+  };
+
+  const handleSocialLogin = (provider) => {
+    alert(`Вход через ${provider} в демо-режиме не реализован. Используйте демо-вход.`);
   };
 
   return (
@@ -91,6 +111,12 @@ function Login({ onLogin }) {
           </Link>
           <h1>🔐 Вход в систему</h1>
           <p>Войдите в ваш аккаунт для доступа ко всем функциям</p>
+          
+          {location.state?.from && (
+            <div className="login-redirect-notice">
+              ⚠️ Для доступа к запрошенной странице требуется авторизация
+            </div>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
@@ -111,6 +137,7 @@ function Login({ onLogin }) {
               placeholder="Введите имя пользователя"
               className={errors.username ? 'error' : ''}
               disabled={isLoading}
+              autoComplete="username"
             />
             {errors.username && <span className="error-message">{errors.username}</span>}
           </div>
@@ -126,6 +153,7 @@ function Login({ onLogin }) {
               placeholder="Введите пароль"
               className={errors.password ? 'error' : ''}
               disabled={isLoading}
+              autoComplete="current-password"
             />
             {errors.password && <span className="error-message">{errors.password}</span>}
           </div>
@@ -173,6 +201,10 @@ function Login({ onLogin }) {
             >
               🚀 Войти как демо-пользователь
             </button>
+            
+            <div className="demo-credentials">
+              <small>Логин: <strong>demo</strong> | Пароль: <strong>demo123</strong></small>
+            </div>
           </div>
 
           <div className="divider">
@@ -180,11 +212,21 @@ function Login({ onLogin }) {
           </div>
 
           <div className="social-login">
-            <button type="button" className="social-btn google">
+            <button 
+              type="button" 
+              className="social-btn google"
+              onClick={() => handleSocialLogin('Google')}
+              disabled={isLoading}
+            >
               <span className="social-icon">🔍</span>
               Войти через Google
             </button>
-            <button type="button" className="social-btn github">
+            <button 
+              type="button" 
+              className="social-btn github"
+              onClick={() => handleSocialLogin('GitHub')}
+              disabled={isLoading}
+            >
               <span className="social-icon">💻</span>
               Войти через GitHub
             </button>
@@ -192,6 +234,9 @@ function Login({ onLogin }) {
 
           <div className="register-link">
             <p>Нет аккаунта? <Link to="/register">Зарегистрироваться</Link></p>
+            <p style={{ fontSize: '0.9em', color: '#666', marginTop: '10px' }}>
+              По вопросам доступа обратитесь к администратору
+            </p>
           </div>
         </form>
       </div>

@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useTechnologies from '../hooks/useTechnologies';
+import TechnologyForm from '../components/TechnologyForm';
 import './AddTechnology.css';
 
 function AddTechnology() {

@@ -1,77 +1,111 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { NavLink } from 'react-router-dom';
 import './Navigation.css';
-import { useState } from 'react';
 
 function Navigation({ isLoggedIn, username, onLogout }) {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+return (
+<nav className="navigation">
+<div className="nav-container">
+<div className="nav-brand">
+<NavLink to="/" className="brand-link">
+💻 TechTracker
+</NavLink>
+</div>
 
-  const navItems = [
-    { path: '/', label: 'Главная', icon: '🏠' },
-    { path: '/technologies', label: 'Технологии', icon: '💻' },
-    { path: '/add-technology', label: 'Добавить', icon: '➕' },
-    { path: '/statistics', label: 'Статистика', icon: '📊' },
-    { path: '/settings', label: 'Настройки', icon: '⚙️' },
-  ];
-
-  const handleLogout = () => {
-    if (onLogout) {
-      onLogout();
-    }
-    navigate('/login');
-  };
-
-  return (
-    <nav className="main-navigation">
-      <div className="nav-container">
-        <div className="nav-brand">
-          <Link to="/" className="brand-link">
-            <span className="brand-icon">💻</span>
-            <h2 className="brand-title">Трекер Технологий</h2>
-          </Link>
-          <button 
-            className="mobile-menu-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+text
+    <div className="nav-menu">
+      <NavLink 
+        to="/" 
+        className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+      >
+        🏠 Главная
+      </NavLink>
+      
+      <NavLink 
+        to="/technologies" 
+        className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+      >
+        📚 Технологии
+      </NavLink>
+      
+      {isLoggedIn && (
+        <>
+          <NavLink 
+            to="/dashboard" 
+            className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
           >
-            {mobileMenuOpen ? '✕' : '☰'}
+            📊 Дашборд
+          </NavLink>
+          
+          <NavLink 
+            to="/statistics" 
+            className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+          >
+            📈 Статистика
+          </NavLink>
+          
+          {/* Новые ссылки для практического занятия */}
+          <div className="dropdown">
+            <button className="dropdown-toggle">
+              ⚙️ Управление
+            </button>
+            <div className="dropdown-menu">
+              <NavLink 
+                to="/add-technology" 
+                className={({ isActive }) => isActive ? 'dropdown-item active' : 'dropdown-item'}
+              >
+                ➕ Добавить технологию
+              </NavLink>
+              <NavLink 
+                to="/import-export" 
+                className={({ isActive }) => isActive ? 'dropdown-item active' : 'dropdown-item'}
+              >
+                📁 Импорт/Экспорт
+              </NavLink>
+              <NavLink 
+                to="/deadlines" 
+                className={({ isActive }) => isActive ? 'dropdown-item active' : 'dropdown-item'}
+              >
+                📅 Сроки изучения
+              </NavLink>
+              <NavLink 
+                to="/bulk-edit" 
+                className={({ isActive }) => isActive ? 'dropdown-item active' : 'dropdown-item'}
+              >
+                ⚡ Массовое редактирование
+              </NavLink>
+              <NavLink 
+                to="/settings" 
+                className={({ isActive }) => isActive ? 'dropdown-item active' : 'dropdown-item'}
+              >
+                ⚙️ Настройки
+              </NavLink>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+
+    <div className="nav-auth">
+      {isLoggedIn ? (
+        <div className="user-section">
+          <span className="username">👤 {username}</span>
+          <button onClick={onLogout} className="logout-btn">
+            Выйти
           </button>
         </div>
-
-        <div className={`nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
-          <ul className="nav-links">
-            {navItems.map(item => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="nav-icon">{item.icon}</span>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="user-section">
-            {isLoggedIn ? (
-              <div className="user-info">
-                <span className="user-greeting">👤 Привет, {username}!</span>
-                <button onClick={handleLogout} className="logout-btn">
-                  Выйти
-                </button>
-              </div>
-            ) : (
-              <Link to="/login" className="login-btn">
-                Войти
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+      ) : (
+        <NavLink 
+          to="/login" 
+          className={({ isActive }) => isActive ? 'login-link active' : 'login-link'}
+        >
+          🔑 Войти
+        </NavLink>
+      )}
+    </div>
+  </div>
+</nav>
+);
 }
 
 export default Navigation;

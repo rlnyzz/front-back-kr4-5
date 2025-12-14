@@ -93,6 +93,14 @@ setTechnologies(prev => [...prev, newTech]);
 return newTech;
 return updatedData;
 }, [setTechnologies]);
+const editTechnology = useCallback((techId, updatedData) => {
+  setTechnologies(prev =>
+    prev.map(tech =>
+      tech.id === techId ? { ...tech, ...updatedData } : tech
+    )
+  );
+  return updatedData;
+}, [setTechnologies]);
 
 const deleteTechnology = useCallback((techId) => {
 setTechnologies(prev => prev.filter(tech => tech.id !== techId));
